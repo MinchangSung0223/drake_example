@@ -31,3 +31,6 @@ cd build
 ctest .
 ```
 # drake_example
+drake로 indy7 urdf를 load하는 예제입니다.
+
+
