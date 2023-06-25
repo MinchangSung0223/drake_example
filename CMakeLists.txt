@@ -9,6 +9,10 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(INDY7_DIR ${PROJECT_SOURCE_DIR}/manipulation/indy7)
+include_directories(
+  ${INDY7_DIR}
+)
 
 find_package(Threads MODULE REQUIRED)
 
@@ -41,4 +45,5 @@ set(DRAKE_PYTHONPATH
 )
 
 add_subdirectory(src)
+add_subdirectory(manipulation/indy7)
 
