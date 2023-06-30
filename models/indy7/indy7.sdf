@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<sdf version="1.7">
+  <model name="indy7">
+   <link name="base_link">
+    <inertial>
+      <pose>0 0 0 0 0 0</pose>
+      <mass>1.59306955</mass>
+      <inertia>
+          <ixx>0.00572623</ixx>
+          <ixy>0.00000251</ixy>
+          <ixz>-0.00011380</ixz>
+          <iyy>0.00558959</iyy>
+          <iyz>-0.00000014</iyz>
+          <izz>0.00966674</izz>
+      </inertia>
+      </inertial>
+
+    <visual name="base_link_visual">
+        <pose>0 0 0 0 0 0</pose>
+      <geometry>
+        <mesh>
+        <uri>meshes/visual/Indy7_0.obj</uri>
+        </mesh>
+      </geometry>
+        <material>
+          <diffuse>0.7 0.7 0.7 1.0</diffuse>
+        </material>    
+    </visual>
+    <collision name="base_link_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+          <uri>meshes/collision/Indy7_0.obj</uri>
+          </mesh>
+        </geometry>
+    </collision>
+  </link>
+
+
+   <link name="shoulder_link">
+    <inertial>
+      <pose>0 0 0 0 0 0</pose>
+      <mass>11.8030102</mass>
+      <inertia>
+          <ixx>0.15418559</ixx>
+          <ixy>-0.00000235</ixy>
+          <ixz>0.00001739</ixz>
+          <iyy>0.12937017</iyy>
+          <iyz>-0.04854267</iyz>
+          <izz>0.05964415</izz>
+      </inertia>
+      </inertial>
+
+    <visual name="shoulder_link_visual">
+        <pose>0 0 0 0 0 0</pose>
+      <geometry>
+        <mesh>
+        <uri>meshes/visual/Indy7_1.obj</uri>
+        </mesh>
+      </geometry>
+        <material>
+          <diffuse>0.7 0.7 0.7 1.0</diffuse>
+        </material>    
+    </visual>
+    <collision name="shoulder_link_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+          <uri>meshes/collision/Indy7_1.obj</uri>
+          </mesh>
+        </geometry>
+    </collision>
+  </link>
+
+
+
+    <joint name="joint0" type="revolute">
+      <child>shoulder_link</child>
+      <parent>base_link</parent>
+        <pose>0 0 0.0775 0 0 0</pose>
+
+      <axis>
+ 
+        <xyz expressed_in="__model__">0 0 1</xyz>
+        <limit>
+          <lower>-2.96706</lower>
+          <upper>2.96706</upper>
+          <effort>300</effort>
+          <velocity>10</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+
+
+  </model>
+</sdf>
