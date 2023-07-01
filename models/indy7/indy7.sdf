@@ -38,6 +38,7 @@
 
 
    <link name="shoulder_link">
+    <pose >0 0 0.0775 0 0 0</pose>
     <inertial>
       <pose>0 0 0 0 0 0</pose>
       <mass>11.8030102</mass>
@@ -59,7 +60,7 @@
         </mesh>
       </geometry>
         <material>
-          <diffuse>0.7 0.7 0.7 1.0</diffuse>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
         </material>    
     </visual>
     <collision name="shoulder_link_collision">
@@ -77,7 +78,6 @@
     <joint name="joint0" type="revolute">
       <child>shoulder_link</child>
       <parent>base_link</parent>
-        <pose>0 0 0.0775 0 0 0</pose>
 
       <axis>
  
@@ -97,6 +97,338 @@
       </axis>
     </joint>
 
+   <link name="upper_arm_link">
+    <pose relative_to="shoulder_link">0 -0.109 0.222 1.57079632679 1.57079632679 0</pose>
+
+    <inertial>
+      <pose>0 0 0 0 0 0</pose>
+      <mass>7.99292141</mass>
+      <inertia>
+          <ixx>0.29356980</ixx>
+          <ixy>-0.00000040</ixy>
+          <ixz>0.00001441</ixz>
+          <iyy>0.28094142</iyy>
+          <iyz>0.03727972</iyz>
+          <izz>0.03620609</izz>
+      </inertia>
+      </inertial>
+
+    <visual name="upper_arm_link_visual">
+        <pose>0 0 0 0 0 0</pose>
+      <geometry>
+        <mesh>
+        <uri>meshes/visual/Indy7_2.obj</uri>
+        </mesh>
+      </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+        </material>    
+    </visual>
+    <collision name="upper_arm_link_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+          <uri>meshes/collision/Indy7_2.obj</uri>
+          </mesh>
+        </geometry>
+    </collision>
+  </link>
+
+
+
+    <joint name="joint1" type="revolute">
+      <parent>shoulder_link</parent>
+      <child>upper_arm_link</child>
+      <pose relative_to="shoulder_link">0 -0.109 0.222 1.57079632679 1.57079632679 0</pose>
+      <axis>
+        <xyz expressed_in="__model__">0 -1 0</xyz>
+        <limit>
+          <lower>-3.05432619099</lower>
+          <upper>3.05432619099</upper>
+          <effort>1000</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+
+   <link name="forearm_link">
+    <pose relative_to="upper_arm_link">-0.45000000 0 -0.03050000 0 0 0</pose>
+    <inertial>
+      <pose>0 0 0 0 0 0</pose>
+    <mass>2.99134127</mass>
+    <inertia>
+      <ixx>0.03424593</ixx>
+      <ixy>0.00000149</ixy>
+      <ixz>0.00000724</ixz>
+      <iyy>0.03406024</iyy>
+      <iyz>0.00186009</iyz>
+      <izz>0.00450477</izz>
+    </inertia>
+      </inertial>
+
+    <visual name="forearm_link_visual">
+        <pose>0 0 0 0 0 0</pose>
+      <geometry>
+        <mesh>
+        <uri>meshes/visual/Indy7_3.obj</uri>
+        </mesh>
+      </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+        </material>    
+    </visual>
+    <collision name="forearm_link_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+          <uri>meshes/collision/Indy7_3.obj</uri>
+          </mesh>
+        </geometry>
+    </collision>
+  </link>
+
+
+    <joint name="joint2" type="revolute">
+      <parent>upper_arm_link</parent>
+      <child>forearm_link</child>
+      <pose relative_to="upper_arm_link">-0.45000000 0 -0.03050000 0 0 0</pose>
+      <axis>
+        <xyz expressed_in="__model__">0 -1 0</xyz>
+        <limit>
+          <lower>-3.05432619099</lower>
+          <upper>3.05432619099</upper>
+          <effort>1000</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+
+   <link name="wrist_1_link">
+   
+      <pose relative_to="forearm_link">-0.26700000 +0.00000000 -0.07500000 -1.57079632679 0 1.57079632679 </pose>
+    <inertial>
+      <pose>0 0 0 0 0 0</pose>
+    <mass>2.12317035</mass>
+    <inertia>
+      <ixx>0.00670405</ixx>
+      <ixy>0.00000375</ixy>
+      <ixz>0.00000150</ixz>
+      <iyy>0.00279246</iyy>
+      <iyz>-0.00127967</iyz>
+      <izz>0.00619341</izz>
+    </inertia>
+      </inertial>
+
+    <visual name="wrist_1_link_visual">
+        <pose>0 0 0 0 0 0</pose>
+      <geometry>
+        <mesh>
+        <uri>meshes/visual/Indy7_4.obj</uri>
+        </mesh>
+      </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+        </material>    
+    </visual>
+    <collision name="wrist_1_link_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+          <uri>meshes/collision/Indy7_4.obj</uri>
+          </mesh>
+        </geometry>
+    </collision>
+  </link>
+
+    <joint name="joint3" type="revolute">
+      <parent>forearm_link</parent>
+      <child>wrist_1_link</child>
+      <pose relative_to="forearm_link">-0.26700000 +0.00000000 -0.07500000 -1.57079632679 0 1.57079632679 </pose>
+      <axis>
+        <xyz expressed_in="__model__">0 0 1</xyz>
+        <limit>
+          <lower>-3.05432619099</lower>
+          <upper>3.05432619099</upper>
+          <effort>1000</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+
+   <link name="wrist_2_link">
+   
+      <pose relative_to="wrist_1_link">0.00000000 -0.11400000 +0.08300000 1.57079632679 1.57079632679 0</pose>
+    <inertial>
+      <pose>0 0 0 0 0 0</pose>
+    <mass>2.28865091</mass>
+    <inertia>
+      <ixx>0.00994891</ixx>
+      <ixy>0.00000014</ixy>
+      <ixz>0.00000321</ixz>
+      <iyy>0.00978189</iyy>
+      <iyz>-0.00093546</iyz>
+      <izz>0.00271492</izz>
+    </inertia>
+      </inertial>
+
+    <visual name="wrist_2_link_visual">
+        <pose>0 0 0 0 0 0</pose>
+      <geometry>
+        <mesh>
+        <uri>meshes/visual/Indy7_5.obj</uri>
+        </mesh>
+      </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+        </material>    
+    </visual>
+    <collision name="wrist_2_link_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+          <uri>meshes/collision/Indy7_5.obj</uri>
+          </mesh>
+        </geometry>
+    </collision>
+  </link>
+
+
+    <joint name="joint4" type="revolute">
+      <parent>wrist_1_link</parent>
+      <child>wrist_2_link</child>
+      <pose relative_to="wrist_1_link">0.00000000 -0.11400000 +0.08300000 1.57079632679 1.57079632679 0</pose>
+      <axis>
+        <xyz expressed_in="__model__">0 -1 0</xyz>
+        <limit>
+          <lower>-3.05432619099</lower>
+          <upper>3.05432619099</upper>
+          <effort>1000</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>
+
+   <link name="wrist_3_link">
+   
+      <pose relative_to="wrist_2_link">-0.16800000 +0.00000000 +0.06900000 -1.57079632679 0 1.57079632679</pose>
+    <inertial>
+      <pose>0 0 0 0 0 0</pose>
+    <mass>0.40083918</mass>
+    <inertia>
+      <ixx>0.00043534</ixx>
+      <ixy>0.00000013</ixy>
+      <ixz>-0.00000002</ixz>
+      <iyy>0.00044549</iyy>
+      <iyz>0.00000051</iyz>
+      <izz>0.00059634</izz>
+    </inertia>
+      </inertial>
+
+    <visual name="wrist_3_link_visual">
+        <pose>0 0 0 0 0 0</pose>
+      <geometry>
+        <mesh>
+        <uri>meshes/visual/Indy7_6.obj</uri>
+        </mesh>
+      </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+        </material>    
+    </visual>
+    <collision name="wrist_3_link_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+          <uri>meshes/collision/Indy7_6.obj</uri>
+          </mesh>
+        </geometry>
+    </collision>
+  </link>
+
+    <joint name="joint5" type="revolute">
+      <parent>wrist_2_link</parent>
+      <child>wrist_3_link</child>
+      <pose relative_to="wrist_2_link">-0.16800000 +0.00000000 +0.06900000 -1.57079632679 0 1.57079632679</pose>
+      <axis>
+        <xyz expressed_in="__model__">0 0 1</xyz>
+        <limit>
+          <lower>-3.05432619099</lower>
+          <upper>3.05432619099</upper>
+          <effort>1000</effort>
+          <velocity>1</velocity>
+        </limit>
+        <dynamics>
+          <damping>0.0</damping>
+          <friction>0</friction>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+        </dynamics>
+      </axis>
+    </joint>  
+
+
+  <link name="tcp">
+   
+      <pose relative_to="wrist_3_link">0 0 0.06 0 0 0</pose>
+    <inertial>
+      <pose>0 0 0 0 0 0</pose>
+    <mass>0.0</mass>
+    <inertia>
+      <ixx>0.0</ixx>
+      <ixy>0.0</ixy>
+      <ixz>0.0</ixz>
+      <iyy>0.0</iyy>
+      <iyz>0.0</iyz>
+      <izz>0.0</izz>
+    </inertia>
+      </inertial>
+
+    <visual name="tcp_visual">
+        <pose>0 0 0 1.570796 0 0</pose>
+      <geometry>
+        <mesh>
+        <scale> 0.01 0.01 0.01 </scale>
+        <uri>meshes/visual/axis.obj</uri>
+        </mesh>
+      </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0 1.0</diffuse>
+        </material>    
+    </visual>
+    <collision name="tcp_collision">
+        <pose>0 0 0 0 0 0</pose>
+    </collision>
+  </link>    
+
+    <joint name="tcp_joint" type="fixed">
+      <parent>wrist_3_link</parent>
+      <child>tcp</child>
+      <pose relative_to="wrist_3_link">0 0 0.06 0 0 0</pose>
+    </joint>  
 
   </model>
 </sdf>
